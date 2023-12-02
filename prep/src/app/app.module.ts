@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { BaseComponent } from './base/base.component';
 import { BaseService } from './base/base.service';
 import { HttpClientModule } from '@angular/common/http';
+import { JsQuesComponent } from './js-ques/js-ques.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BaseComponent
+    BaseComponent,
+    JsQuesComponent
   ],
   imports: [
     HttpClientModule,

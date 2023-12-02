@@ -22,6 +22,44 @@ export class BaseService {
    
   }
 
+   filterData = of( [
+    {
+      'name':'Mac',
+      'age':24,
+      'bType':'A',
+      'marks':{
+        'eng':34,
+        'maths':67
+      }      
+    },
+    {
+      'name':'Mary',
+      'age':24,
+      'bType':'B',
+      'marks':{
+        'eng':40,
+        'maths':54
+      }      
+    },
+    {
+      'name':'Matt',
+      'age':24,
+      'bType':'B+',
+      'marks':{
+        'eng':78,
+        'maths':45
+      }      
+    }, {
+      'name':'Maryse',
+      'age':24,
+      'bType':'AB+',
+      'marks':{
+        'eng':90,
+        'maths':87
+      }      
+    }
+  ]);
+
   combineFirstSource = new Observable(subscriber => {
     setTimeout(() => { subscriber.next(1)},1000);
     setTimeout(() => { subscriber.next(2)},5000);
@@ -71,6 +109,17 @@ export class BaseService {
     setTimeout(() => subscriber.next('addresses'),2000);
     setTimeout(() => subscriber.next('banks'),2200);    
   })
+
+
+
+  filterStudent(){
+    this.filterData.pipe(
+      tap((data) => console.log('tap data',data)),
+      map((data) => data.filter((student) => student.marks.eng > 75))
+    ).subscribe((data:any) => {
+      console.log('data for filtet',data);
+    });
+  }
 
   getSwitchMapExample(){
     this.switchMapSource$.pipe(
